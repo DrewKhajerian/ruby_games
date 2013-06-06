@@ -14,11 +14,12 @@
 # it's a tie
 
 class TicTacToe
-	attr_accessor :board_array, :total_moves
+	attr_accessor :board_array, :total_moves, :player
 
 	def initialize 
 		@board_array = ["1","2","3","4","5","6","7","8","9"]
 		@total_moves = 0
+		@player = "Player1"
 	end
 
 	def setup_board
@@ -50,11 +51,17 @@ class TicTacToe
 
 		if @total_moves % 2 == 0
 			@board_array[choice-1] = "x"
+			@player = "Player2"
 		else
 			@board_array[choice-1] = "o"
+			@player = "Player1"
 		end
 
 		@total_moves += 1
+	end
+
+	def player
+		@player
 	end
 
 	def tie?
@@ -70,6 +77,7 @@ class TicTacToe
 			(@board_array[2] == "x" && @board_array[5] == "x" && @board_array[8] == "x") ||
 			(@board_array[0] == "x" && @board_array[4] == "x" && @board_array[8] == "x") ||
 			(@board_array[2] == "x" && @board_array[4] == "x" && @board_array[6] == "x")
+				puts "Player1 wins!"
 				return true
 		elsif (@board_array[0] == "o" && @board_array[1] == "o" && @board_array[2] == "o") ||
 			(@board_array[3] == "o" && @board_array[4] == "o" && @board_array[5] == "o") ||
@@ -79,6 +87,7 @@ class TicTacToe
 			(@board_array[2] == "o" && @board_array[5] == "o" && @board_array[8] == "o") ||
 			(@board_array[0] == "o" && @board_array[4] == "o" && @board_array[8] == "o") ||
 			(@board_array[2] == "o" && @board_array[4] == "o" && @board_array[6] == "o")
+				puts "Player2 wins!"
 				return true
 		end
 

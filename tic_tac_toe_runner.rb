@@ -9,7 +9,7 @@ class TicTacToeRunner
     # game runs here!
     	puts ""
 			puts "\n#{@game.setup_board}"
-			puts "player enter move"
+			puts "#{@game.player} enter move"
 			choice = gets.chomp
 			puts ""
 			@game.move(choice.to_i)
@@ -17,7 +17,6 @@ class TicTacToeRunner
 				puts "It's a tie!"
 				break
 			elsif @game.win?
-				puts "You win!"
 				break
 			end
 
