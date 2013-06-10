@@ -38,7 +38,7 @@ class TicTacToe
 	#check if user has entered a value from 1-9
 	#if not raise exception in move method
 	def valid_move?(choice)
-		if (1..9).include?(choice.to_i)
+		if (1..9).include?(choice)
 			return true
 		else
 			return false
