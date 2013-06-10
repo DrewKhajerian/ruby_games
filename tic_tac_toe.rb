@@ -1,16 +1,9 @@
 # Layout the game board
-
-
 # Input numbers in each empty box
-
 # Player 1 chooses a square
-
 # That square's number changes to corresponding x/o
-
 # Alternate for each player until.. 
-
 # player wins 
-
 # it's a tie
 
 class TicTacToe
@@ -20,6 +13,7 @@ class TicTacToe
 		@board_array = ["1","2","3","4","5","6","7","8","9"]
 		@total_moves = 0
 		@player = "Player1"
+		@move = nil
 	end
 
 	def setup_board
@@ -37,12 +31,14 @@ class TicTacToe
 			else
 			  print "#{@board_array[i]}\n"
 			end
-
 		end
 		print ""
 	end
 
-
+	def valid_move?
+		if @move != [123456789]
+			puts "invalid move!"
+	end
 
   # method called when each player choses (choice argument) a square.
   # will have a for loop with counter i which alternates players1 (odd numbers)
@@ -56,12 +52,7 @@ class TicTacToe
 			@board_array[choice-1] = "o"
 			@player = "Player1"
 		end
-
 		@total_moves += 1
-	end
-
-	def player
-		@player
 	end
 
 	def tie?
@@ -90,10 +81,7 @@ class TicTacToe
 				puts "Player2 wins!"
 				return true
 		end
-
 	end
-
-
 end
 
 game = TicTacToe.new()

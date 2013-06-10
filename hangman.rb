@@ -2,7 +2,7 @@ class Hangman
 	LIST = ["canada", "england", "australia", "japan"]
   attr_accessor :word, :chances, :board, :list, :guesses, :answer
 
-  class InvalidClassException < Exception 
+  class InvalidGuessException < Exception 
     # empty because it inherents from Exception class
   end
 
@@ -15,13 +15,14 @@ class Hangman
   
   # return @guesses as a string
   def guesses
-  	@guesses.join(", ")
+  	@guesses
   end
   
   # if the word has the given letter, put it on the board, otherwise, it's a wrong guess
   def guess(letter)
-    raise InvalidGuessException.new("Invalid guess!") unless valid_guess?(letter)# raise an execption
+    # raise an execption
     # raise will 'break' the method if valid_guess? == false
+    raise InvalidGuessException.new("Invalid guess!") unless valid_guess?(letter)
     if word_has?(letter)
     	put_letter_on_board(letter)
     else
@@ -31,8 +32,7 @@ class Hangman
 
   # return true if @board doesn't have a '_', otherwise return false
   def win?
-    @board.inject(true) {|b, x| b && x != "_"}
-    # !@board.include? '_'
+    !@board.include? '_'
   end
 
   # return true if @chances is 0, otherwise return false
@@ -43,7 +43,7 @@ class Hangman
   private
 
   def valid_guess?(letter)
-    guess.length==1
+    letter.length==1
   end
 
   # return a string of underscores equal to length of the given word

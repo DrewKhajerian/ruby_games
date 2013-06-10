@@ -9,7 +9,7 @@ class HangmanRunner
   def self.run 
     @game = Hangman.new()
     while true
-    	puts "\nBoard: #{@game.board.join}\n\n"
+    	puts "\nBoard: #{@game.board}\n\n"
 	    puts "Guessed letters: #{@game.guesses}\n\n"
 	    puts "Chances: #{@game.chances}\n\n" 
 	    print "Take your best shot! Enter guess: "
