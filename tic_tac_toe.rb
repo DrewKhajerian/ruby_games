@@ -35,24 +35,32 @@ class TicTacToe
 		print ""
 	end
 
-	def valid_move?
-		if @move != [123456789]
-			puts "invalid move!"
+	#check if user has entered a value from 1-9
+	#if not raise exception in move method
+	def valid_move?(choice)
+		if (1..9).include?(choice.to_i)
+			return true
+		else
+			return false
+		end
 	end
 
   # method called when each player choses (choice argument) a square.
   # will have a for loop with counter i which alternates players1 (odd numbers)
   # and player2 (even numbers)
 	def move(choice)
-
-		if @total_moves % 2 == 0
-			@board_array[choice-1] = "x"
-			@player = "Player2"
+		if valid_move?(choice)
+			if @total_moves % 2 == 0
+				@board_array[choice-1] = "x"
+				@player = "Player2"
+			else
+				@board_array[choice-1] = "o"
+				@player = "Player1"
+			end
+			@total_moves += 1
 		else
-			@board_array[choice-1] = "o"
-			@player = "Player1"
+			"Invalid move! Try again."
 		end
-		@total_moves += 1
 	end
 
 	def tie?

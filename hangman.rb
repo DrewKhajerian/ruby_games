@@ -42,8 +42,9 @@ class Hangman
 
   private
 
+  #check if input is 1 character length and a letter
   def valid_guess?(letter)
-    letter.length==1
+    letter.length==1 && ("a".."z").include?(letter)
   end
 
   # return a string of underscores equal to length of the given word
